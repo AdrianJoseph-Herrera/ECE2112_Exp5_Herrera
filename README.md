@@ -1,58 +1,52 @@
 # ECE 2112: Advanced Computer Programming and Algorithms
-## Experiment 5: Introduction to Matrix Programming & Linear Systems
+## Experiment 5: Introduction to MATLAB Programming (Python / NumPy Implementation)
 
-### Overview
-This repository contains the solution for **Experiment 5** of the ECE 2112 course at the University of Santo Tomas (Faculty of Engineering, Electronics Engineering Department). 
+<div align="center">
 
-Although originally designed for MATLAB, this implementation uses **Python 3** with **NumPy** in a Jupyter Notebook / JuCode environment to perform matrix operations, analyze real vs. complex matrix transpositions, and solve simultaneous linear systems.
+| Field | Details |
+| :--- | :--- |
+| **Author** | Adrian Joseph R. Herrera |
+| **Student ID** | 2025000458 |
+| **Section** | 2ECE-D |
+| **Department** | Electronics Engineering Department |
+| **Institution** | University of Santo Tomas - Faculty of Engineering |
+| **Platform** | JuCode (Python 3 / NumPy) |
 
----
-
-### Key Learning Outcomes
-1. Creation of real and complex matrices using numerical libraries.
-2. Differentiation between transpose and complex-conjugate (Hermitian) transpose operations.
-3. Matrix representation of linear systems.
-4. Solving linear systems using the Matrix Inverse Method and Cramer's Rule, followed by numerical precision validation.
-
----
-
-### Implementation Details
-
-#### **Problem A: Transpose Operations**
-- **Real Matrix ($R$):** Evaluated standard transpose, conjugate transpose, and non-conjugate transpose. Verified that all three yield identical results due to zero imaginary components.
-- **Complex Matrix ($Z$):** Compared non-conjugate transpose (`transpose(Z)` / `Z.T`) against complex-conjugate transpose (`Z.conj().T`). Demonstrated how the apostrophe / conjugate operator negates imaginary components.
-
-#### **Problem B: Linear System Solution**
-Solves the linear system $A \mathbf{x} = \mathbf{b}$:
-$$
-\begin{aligned}
-2x_1 - x_2 + 3x_3 + 2x_4 &= 16 \\
-x_1 + 4x_2 - 2x_3 + x_4 &= -7 \\
-3x_1 + 2x_2 + x_3 - x_4 &= 6 \\
--2x_1 + 3x_2 + 4x_3 + 2x_4 &= 7
-\end{aligned}
-$$
-
-1. **Inverse Method:** $\mathbf{x}_{\text{inv}} = A^{-1} \mathbf{b}$ using `np.linalg.inv()`.
-2. **Cramer's Rule:** Evaluated by iteratively swapping columns of $A$ with $\mathbf{b}$ and computing determinants via `np.linalg.det()`.
-3. **Verification Checks:** 
-   - `det(A) != 0` check.
-   - Norm difference check: $\text{norm}(\mathbf{x}_{\text{inv}} - \mathbf{x}_{\text{cramer}}) \approx 0$
-   - Residual norm check: $\text{norm}(A\mathbf{x}_{\text{inv}} - \mathbf{b}) \approx 0$
+</div>
 
 ---
 
-### Requirements & Setup
-To run this script locally or in JuCode:
-- **Python 3.x**
-- **NumPy**
+## 📌 Overview
+This repository contains the programming implementation for **Experiment 5: Introduction to MATLAB Programming**, adapted for execution in **JuCode** using **Python 3** and the **NumPy** library. 
 
-```bash
-pip install numpy
-```
+The lab focuses on matrix creation, transpose operations, analyzing complex vs. real matrix behavior, expressing simultaneous linear systems in matrix form, and solving linear systems using both the **Inverse Method** and **Cramer's Rule** alongside numerical precision checks.
 
 ---
 
-### File Structure
-- `Herrera_PA5.py` / `Herrera_PA5.ipynb` — Primary Python script containing Problem A and Problem B implementations.
-- `README.md` — Project documentation.
+## 📂 Repository Contents
+* `Herrera_PA5.py` — Complete Python script containing both Problem A and Problem B with labeled outputs, analysis comments, and precision checks.
+
+---
+
+## 🛠️ Intended Learning Outcomes & Implementation
+1. **Real & Complex Matrices:** Creating and inspecting multi-dimensional arrays and complex number matrices using `numpy.array`.
+2. **Transpose Operations:** Distinguishing between standard non-conjugate transposes (`transpose` / `.T`) and complex-conjugate transposes (`.conj().T`) for both real matrix $R$ and complex matrix $Z$.
+3. **Simultaneous Linear Systems:** Setting up coefficient matrix $A$ and right-hand side vector $b$ for a 4-variable linear system.
+4. **Alternative Solvers:** Solving the system via:
+   * **Inverse Method:** $x_{\text{inv}} = A^{-1}b$
+   * **Cramer's Rule:** Replacing individual columns of $A$ with $b$ and computing ratios of determinants.
+5. **Numerical Verification:** Validating results using matrix norms (`np.linalg.norm`) and non-zero determinant checks (`np.linalg.det`).
+
+---
+
+## 🚀 How to Run
+1. Open your JuCode workspace.
+2. Ensure NumPy is available (`import numpy as np`).
+3. Run the script `Herrera_PA5.py` from beginning to end without errors.
+
+---
+
+## 📝 Analysis Summary (Problem A)
+* **Real Matrix $R$:** All transpose operations (`transpose(R)`, conjugate transpose, and non-conjugate transpose) yield identical results because imaginary components are zero.
+* **Complex Matrix $Z$:** `transpose(Z)` and non-conjugate transpose (`Z.T`) yield identical results by swapping indices without altering imaginary signs.
+* **Apostrophe Operator (`'`) Equivalent (`Z.conj().T`):** Performs the complex-conjugate (Hermitian) transpose, which both swaps rows/columns and negates the imaginary components of complex entries.
